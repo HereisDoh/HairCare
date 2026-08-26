@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hairly ✨ | Your Hair, Your Way</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <div class="logo" onclick="showPage('home')">Hairly ✨</div>
+
+  <nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('about')">About Your Hair</button>
+    <button onclick="showPage('goals')">Hair Goals</button>
+    <button onclick="showPage('products')">Products</button>
+    <button onclick="showPage('routine')">My Routine</button>
+  </nav>
+</header>
+
+
+<!-- HOME -->
+<section id="home" class="page active">
+
+  <div class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">WELCOME TO HAIRLY</p>
+
+      <h1>
+        Your hair.<br>
+        <span>Your way.</span>
+      </h1>
+
+      <p class="hero-description">
+        Discover your hair, learn how to care for it,
+        and create a routine designed around your goals.
+      </p>
+
+      <button class="main-button" onclick="showPage('about')">
+        Start My Hair Journey →
+      </button>
+    </div>
+
+    <div class="hero-card">
+      <div class="sparkle">✦</div>
+      <h2>Let's get to know<br>your hair.</h2>
+      <p>
+        Upload a photo and answer a few questions
+        to create your personalized hair profile.
+      </p>
+
+      <button onclick="showPage('about')">
+        Get Started
+      </button>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ABOUT YOUR HAIR -->
+<section id="about" class="page">
+
+  <div class="page-heading">
+    <p class="eyebrow">STEP 1</p>
+    <h1>About Your Hair 👤</h1>
+    <p>Tell us a little about your hair.</p>
+  </div>
+
+  <div class="content-card">
+
+    <h2>📸 Add a Hair Photo</h2>
+
+    <p>
+      Add a picture so you can keep your hair profile
+      all in one place.
+    </p>
+
+    <label class="upload-box">
+      <input
+        type="file"
+        accept="image/*"
+        id="hairPhoto"
+        onchange="previewPhoto(event)"
+      >
+
+      <div id="uploadContent">
+        <span>📷</span>
+        <strong>Choose a photo</strong>
+        <small>JPG, PNG, or WEBP</small>
+      </div>
+
+      <img id="photoPreview" class="photo-preview">
+    </label>
+
+    <p class="notice">
+      Your photo is only used as a visual reference.
+      Hairly does not diagnose medical conditions.
+    </p>
+
+  </div>
+
+
+  <div class="content-card">
+
+    <h2>What is your hair texture?</h2>
+
+    <div class="choice-grid">
+
+      <button class="choice" onclick="selectChoice(this,'texture','Straight')">
+        <span>〰</span>
+        Straight
+      </button>
+
+      <button class="choice" onclick="selectChoice(this,'texture','Wavy')">
+        <span>〰〰</span>
+        Wavy
+      </button>
+
+      <button class="choice" onclick="selectChoice(this,'texture','Curly')">
+        <span>🌀</span>
+        Curly
+      </button>
+
+      <button class="choice" onclick="selectChoice(this,'texture','Coily')">
+        <span>➰</span>
+        Coily
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="content-card">
+
+    <h2>How thick does your hair feel?</h2>
+
+    <div class="choice-grid">
+
+      <button class="choice" onclick="selectChoice(this,'thickness','Fine')">
+        Fine
+      </button>
+
+      <button class="choice" onclick="selectChoice(this,'thickness','Medium')">
+        Medium
+      </button>
+
+      <button class="choice" onclick="selectChoice(this,'thickness','Thick')">
+        Thick
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="content-card">
+
+    <h2>How would you describe your scalp?</h2>
+
+    <div class="choice-grid">
+
+      <button class="choice" onclick="selectChoice(this,'scalp','Dry')">
+        💧 Dry
+      </button>
+
+      <button class="choice" onclick="selectChoice(this,'scalp','Balanced')">
+        ⚖️ Balanced
+      </button>
+
+      <button class="choice" onclick="selectChoice(this,'scalp','Oily')">
+        ✨ Oily
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="content-card">
+
+    <h2>Anything else we should know?</h2>
+
+    <textarea
+      id="concerns"
+      placeholder="Examples: frizz, dryness, tangles, damaged ends..."
+    ></textarea>
+
+  </div>
+
+
+  <button class="main-button" onclick="showPage('goals')">
+    Continue to Hair Goals →
+  </button>
+
+</section>
+
+
+<!-- GOALS -->
+<section id="goals" class="page">
+
+  <div class="page-heading">
+    <p class="eyebrow">STEP 2</p>
+    <h1>What are your hair goals? 🎯</h1>
+    <p>Choose as many as you want.</p>
+  </div>
+
+  <div class="goals-grid">
+
+    <button class="goal" onclick="toggleGoal(this,'Less frizz')">
+      ✨
+      <strong>Less frizz</strong>
+      <small>Smoother-looking hair</small>
+    </button>
+
+    <button class="goal" onclick="toggleGoal(this,'More waves')">
+      〰️
+      <strong>More waves</strong>
+      <small>Bring out natural waves</small>
+    </button>
+
+    <button class="goal" onclick="toggleGoal(this,'More curl')">
+      🌀
+      <strong>More curl</strong>
+      <small>More curl definition</small>
+    </button>
+
+    <button class="goal" onclick="toggleGoal(this,'Less curl')">
+      ➖
+      <strong>Less curl</strong>
+      <small>A smoother appearance</small>
+    </button>
+
+    <button class="goal" onclick="toggleGoal(this,'Straighter')">
+      📏
+      <strong>Straighter</strong>
+      <small>A straighter look</small>
+    </button>
+
+    <button class="goal" onclick="toggleGoal(this,'More volume')">
+      🔊
+      <strong>More volume</strong>
+      <small>Fuller-looking hair</small>
+    </button>
+
+    <button class="goal" onclick="toggleGoal(this,'More shine')">
+      ✨
+      <strong>More shine</strong>
+      <small>Shiny-looking hair</small>
+    </button>
+
+    <button class="goal" onclick="toggleGoal(this,'More moisture')">
+      💧
+      <strong>More moisture</strong>
+      <small>Reduce dryness</small>
+    </button>
+
+    <button class="goal" onclick="toggleGoal(this,'Less breakage')">
+      💪
+      <strong>Less breakage</strong>
+      <small>Gentler hair care</small>
+    </button>
+
+  </div>
+
+
+  <div class="content-card effort">
+
+    <h2>How much time do you want to spend?</h2>
+
+    <button class="effort-choice" onclick="selectEffort(this,'Quick')">
+      ⚡ <strong>Quick</strong>
+      <span>About 5 minutes</span>
+    </button>
+
+    <button class="effort-choice" onclick="selectEffort(this,'Moderate')">
+      🌿 <strong>Moderate</strong>
+      <span>About 10–15 minutes</span>
+    </button>
+
+    <button class="effort-choice" onclick="selectEffort(this,'Detailed')">
+      💆 <strong>Detailed</strong>
+      <span>I enjoy a longer routine</span>
+    </button>
+
+  </div>
+
+
+  <button class="main-button" onclick="createPlan()">
+    Create My Hair Plan ✨
+  </button>
+
+</section>
+
+
+<!-- PRODUCTS -->
+<section id="products" class="page">
+
+  <div class="page-heading">
+    <p class="eyebrow">YOUR RESULTS</p>
+    <h1>Recommended Products 🧴</h1>
+    <p>Product categories that may fit your goals.</p>
+  </div>
+
+  <div id="productResults" class="results-grid"></div>
+
+  <div class="tip-card">
+    <h2>💡 Remember</h2>
+    <p>
+      You don't need a huge collection of products.
+      Start with a few basics and see how your hair responds.
+    </p>
+  </div>
+
+</section>
+
+
+<!-- ROUTINE -->
+<section id="routine" class="page">
+
+  <div class="page-heading">
+    <p class="eyebrow">YOUR PERSONALIZED PLAN</p>
+    <h1>My Hair Routine 📚</h1>
+    <p>A simple routine based on your answers.</p>
+  </div>
+
+  <div id="profileSummary" class="profile-summary"></div>
+
+  <div id="routineResults"></div>
+
+  <div class="healthy-card">
+
+    <h2>🌱 Healthy Hair Basics</h2>
+
+    <div class="health-tip">
+      <strong>Be gentle</strong>
+      <p>
+        Detangle carefully and avoid unnecessary pulling or tugging.
+      </p>
+    </div>
+
+    <div class="health-tip">
+      <strong>Protect from heat</strong>
+      <p>
+        If you use heat styling tools, use an appropriate heat protectant.
+      </p>
+    </div>
+
+    <div class="health-tip">
+      <strong>Don't change everything at once</strong>
+      <p>
+        Try new products gradually so you can tell what works for you.
+      </p>
+    </div>
+
+    <div class="health-tip">
+      <strong>Listen to your hair</strong>
+      <p>
+        Your hair can respond differently depending on products,
+        weather, styling, and your routine.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+  <strong>Hairly ✨</strong>
+  <p>Learn about your hair. Take care of it. Make it yours.</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
