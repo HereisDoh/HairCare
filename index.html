@@ -1,1 +1,59 @@
+import { AuthProvider, useAuth } from './context/AuthContext';
+import { HairProvider, useHair } from './context/HairContext';
+import { AuthPage } from './components/AuthPage';
+import { Navigation } from './components/Navigation';
+import { HomePage } from './components/HomePage';
+import { PhotoUploadPage } from './components/PhotoUploadPage';
+import { QuestionnairePage } from './components/QuestionnairePage';
+import { AboutYourHairPage } from './components/AboutYourHairPage';
+import { RecommendedProductsPage } from './components/RecommendedProductsPage';
+import { CareTipsPage } from './components/CareTipsPage';
 
+function StrandWiseContent() {
+  const { user, loading: authLoading } = useAuth();
+  const { page, profileLoading } = useHair();
+
+  if (authLoading) {
+    return (
+      <div className="sw-welcome">
+        <p className="sw-hint">Loading StrandWise…</p>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <AuthPage />;
+  }
+
+  if (profileLoading) {
+    return (
+      <div className="sw-welcome">
+        <p className="sw-hint">Loading your profile…</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="sw-app">
+      <Navigation />
+      <main className="sw-main">
+        {page === 'home' && <HomePage />}
+        {page === 'photos' && <PhotoUploadPage />}
+        {page === 'questionnaire' && <QuestionnairePage />}
+        {page === 'about' && <AboutYourHairPage />}
+        {page === 'products' && <RecommendedProductsPage />}
+        {page === 'care' && <CareTipsPage />}
+      </main>
+    </div>
+  );
+}
+
+export default function StrandWiseApp() {
+  return (
+    <AuthProvider>
+      <HairProvider>
+        <StrandWiseContent />
+      </HairProvider>
+    </AuthProvider>
+  );
+}
